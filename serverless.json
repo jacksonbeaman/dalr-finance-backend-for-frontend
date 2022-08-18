@@ -9,7 +9,7 @@
   },
   "functions": {
     "getQuote": {
-      "handler": "src/lambda/getQuote.handler",
+      "handler": "src/lambda/getQuote/index.handler",
       "events": [
         {
           "httpApi": "GET /quote"
@@ -17,7 +17,7 @@
       ]
     },
     "postBuyStock": {
-      "handler": "src/lambda/postBuyStock.handler",
+      "handler": "src/lambda/postBuyStock/index.handler",
       "events": [
         {
           "httpApi": "POST /buy"
@@ -25,7 +25,7 @@
       ]
     },
     "postSellStock": {
-      "handler": "src/lambda/postSellStock.handler",
+      "handler": "src/lambda/postSellStock/index.handler",
       "events": [
         {
           "httpApi": "POST /sell"
@@ -33,7 +33,7 @@
       ]
     },
     "postCreateUser": {
-      "handler": "src/lambda/postCreateUser.handler",
+      "handler": "src/lambda/postCreateUser/index.handler",
       "events": [
         {
           "httpApi": "POST /createUser"
@@ -41,7 +41,7 @@
       ]
     },
     "getUser": {
-      "handler": "src/lambda/getUser.handler",
+      "handler": "src/lambda/getUser/index.handler",
       "events": [
         {
           "httpApi": "GET /getUser"
@@ -49,7 +49,7 @@
       ]
     },
     "postFundAccount": {
-      "handler": "src/lambda/postFundAccount.handler",
+      "handler": "src/lambda/postFundAccount/index.handler",
       "events": [
         {
           "httpApi": "POST /postFundAccount"
@@ -57,7 +57,7 @@
       ]
     },
     "postWithdrawAccount": {
-      "handler": "src/lambda/postWithdrawAccount.handler",
+      "handler": "src/lambda/postWithdrawAccount/index.handler",
       "events": [
         {
           "httpApi": "POST /postWithdrawAccount"
@@ -65,7 +65,7 @@
       ]
     },
     "getTransactionHistory": {
-      "handler": "src/lambda/getTransactionHistory.handler",
+      "handler": "src/lambda/getTransactionHistory/index.handler",
       "events": [
         {
           "httpApi": "GET /getTransactionHistory"
