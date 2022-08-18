@@ -1,5 +1,5 @@
 const { PutItemCommand } = require('@aws-sdk/client-dynamodb');
-const ddb = require('../dynamodb');
+const ddb = require('../../dynamodb');
 
 exports.handler = async (event, context) => {
   try {

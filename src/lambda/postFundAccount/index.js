@@ -1,5 +1,5 @@
-const getUser = require('../dynamodb/getUser/index.js');
-const recordTransaction = require('../dynamodb/recordTransaction/index.js');
+const getUser = require('../../dynamodb/getUser/index.js');
+const recordTransaction = require('../../dynamodb/recordTransaction/index.js');
 
 exports.handler = async (event, context) => {
   try {

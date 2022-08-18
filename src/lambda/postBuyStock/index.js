@@ -1,6 +1,6 @@
-const getUser = require('../dynamodb/getUser');
-const recordTransaction = require('../dynamodb/recordTransaction');
-const getQuote = require('./utils/getQuote');
+const getUser = require('../../dynamodb/getUser');
+const recordTransaction = require('../../dynamodb/recordTransaction');
+const getQuote = require('../utils/getQuote');
 
 exports.handler = async (event, context) => {
   try {
@@ -22,49 +22,41 @@ exports.handler = async (event, context) => {
       iexToken
     );
 
-    const amount = (
+    const amount = -(
       Math.floor(100 * parseInt(shares) * parseFloat(sharePrice)) / 100
     ).toFixed(2);
 
     const userData = await getUser(user);
+
+    if (userData.cash < -amount) {
+      const error = new Error('Insufficient funds to complete transaction');
+      error.statusCode = 400;
+      throw error;
+    }
 
     let currentSharesOwned = 0;
 
     if (Object.keys(userData.positions).find((elt) => elt === symbol)) {
       currentSharesOwned = userData.positions[symbol];
     } else {
-      const error = new Error('No current position corresponding to symbol');
-      error.statusCode = 400;
-      throw error;
+      console.log('symbol not owned');
     }
 
     const updatedPositions = userData.positions;
 
-    if (currentSharesOwned < shares) {
-      const error = new Error(
-        `Cannot sell more shares than shares owned - attemping to sell ${shares} shares of ${symbol}, while only ${currentSharesOwned} shares owned`
-      );
-      error.statusCode = 400;
-      throw error;
-    } else if (currentSharesOwned > shares) {
-      updatedPositions[symbol] = currentSharesOwned - parseInt(shares);
-    } else {
-      // catch errors above
-      // currentSharesOwned === shares
-      delete updatedPositions[symbol];
-    }
+    updatedPositions[symbol] = parseInt(shares) + currentSharesOwned;
 
     const stockTransactionData = {
       symbol,
       companyName,
-      shares: -shares,
+      shares,
       sharePrice,
     };
 
     const res = await recordTransaction(
       user,
       amount,
-      'stock sale',
+      'stock purchase',
       stockTransactionData,
       updatedPositions
     );

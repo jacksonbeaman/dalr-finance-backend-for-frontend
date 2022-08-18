@@ -1,4 +1,4 @@
-const getUser = require('../dynamodb/getUser');
+const getUser = require('../../dynamodb/getUser');
 
 exports.handler = async (event, context) => {
   try {

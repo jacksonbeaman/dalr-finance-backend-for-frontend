@@ -1,5 +1,5 @@
 const axios = require('axios');
-const getUser = require('../dynamodb/getUser');
+const getUser = require('../../dynamodb/getUser');
 exports.handler = async (event, context) => {
   // console.log(event);
   try {

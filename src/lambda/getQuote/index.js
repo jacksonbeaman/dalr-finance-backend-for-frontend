@@ -1,4 +1,4 @@
-const getQuote = require('./utils/getQuote');
+const getQuote = require('../utils/getQuote');
 
 exports.handler = async (event, context) => {
   try {
