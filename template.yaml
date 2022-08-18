@@ -1,0 +1,107 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: AWS SAM template for dalr finance app
+LambdaProperties: &LambdaProperties
+  Handler: index.handler
+  Runtime: nodejs14.x
+Resources:
+  ApiGatewayApi:
+    Type: AWS::Serverless::Api
+    Properties:
+      StageName: Prod
+  LambdaFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      <<: *LambdaProperties
+      CodeUri: /src/lambda/getQuote
+      Events:
+        ProxyApiRoot:
+          Type: Api
+          Properties:
+            RestApiId: !Ref ApiGatewayApi
+            Path: /quote
+            Method: GET
+  LambdaFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      <<: *LambdaProperties
+      CodeUri: /src/lambda/getTransactionHistory
+      Events:
+        ProxyApiRoot:
+          Type: Api
+          Properties:
+            RestApiId: !Ref ApiGatewayApi
+            Path: /transaction-history
+            Method: GET
+  LambdaFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      <<: *LambdaProperties
+      CodeUri: /src/lambda/getUser
+      Events:
+        ProxyApiRoot:
+          Type: Api
+          Properties:
+            RestApiId: !Ref ApiGatewayApi
+            Path: /user
+            Method: GET
+  LambdaFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      <<: *LambdaProperties
+      CodeUri: /src/lambda/postBuyStock
+      Events:
+        ProxyApiRoot:
+          Type: Api
+          Properties:
+            RestApiId: !Ref ApiGatewayApi
+            Path: /buy
+            Method: POST
+  LambdaFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      <<: *LambdaProperties
+      CodeUri: /src/lambda/postCreateUser
+      Events:
+        ProxyApiRoot:
+          Type: Api
+          Properties:
+            RestApiId: !Ref ApiGatewayApi
+            Path: /user
+            Method: POST
+  LambdaFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      <<: *LambdaProperties
+      CodeUri: /src/lambda/postFundAccount
+      Events:
+        ProxyApiRoot:
+          Type: Api
+          Properties:
+            RestApiId: !Ref ApiGatewayApi
+            Path: /fund
+            Method: POST
+  LambdaFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      <<: *LambdaProperties
+      CodeUri: /src/lambda/postSellAccount
+      Events:
+        ProxyApiRoot:
+          Type: Api
+          Properties:
+            RestApiId: !Ref ApiGatewayApi
+            Path: /sell
+            Method: POST
+  LambdaFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      <<: *LambdaProperties
+      CodeUri: /src/lambda/postWithdrawAccount
+      Events:
+        ProxyApiRoot:
+          Type: Api
+          Properties:
+            RestApiId: !Ref ApiGatewayApi
+            Path: /withdraw
+            Method: POST
