@@ -12,8 +12,6 @@ const getQuote = async (symbol, iexToken) => {
       timeout: 0,
     };
 
-    console.log(process.env);
-    console.log(iexToken);
     const { data } = await axios(settings);
 
     return data;
