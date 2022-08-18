@@ -1,0 +1,23 @@
+version = 0.1
+[default]
+[default.pipeline_bootstrap]
+[default.pipeline_bootstrap.parameters]
+pipeline_user = "arn:aws:iam::636793644820:user/aws-sam-cli-managed-build-dalr-fund-a-PipelineUser-83X1A6IH00P8"
+
+[build-dalr-fund-account]
+[build-dalr-fund-account.pipeline_bootstrap]
+[build-dalr-fund-account.pipeline_bootstrap.parameters]
+pipeline_execution_role = "arn:aws:iam::636793644820:role/aws-sam-cli-managed-build-da-PipelineExecutionRole-1XGY5D4EX2VLM"
+cloudformation_execution_role = "arn:aws:iam::636793644820:role/aws-sam-cli-managed-build-CloudFormationExecutionR-1GF7YVAISYJAZ"
+artifacts_bucket = "aws-sam-cli-managed-build-dalr-fu-artifactsbucket-amut84zwko89"
+image_repository = ""
+region = "us-west-2"
+
+[deploy-dalr-fund-account]
+[deploy-dalr-fund-account.pipeline_bootstrap]
+[deploy-dalr-fund-account.pipeline_bootstrap.parameters]
+pipeline_execution_role = "arn:aws:iam::636793644820:role/aws-sam-cli-managed-deploy-d-PipelineExecutionRole-13HGV1S2043HM"
+cloudformation_execution_role = "arn:aws:iam::636793644820:role/aws-sam-cli-managed-deplo-CloudFormationExecutionR-65JMI9H0JAP4"
+artifacts_bucket = "aws-sam-cli-managed-deploy-dalr-f-artifactsbucket-600sfrypn42l"
+image_repository = ""
+region = "us-west-2"
