@@ -36,7 +36,7 @@
       "handler": "src/lambda/postCreateUser/index.handler",
       "events": [
         {
-          "httpApi": "POST /createUser"
+          "httpApi": "POST /user"
         }
       ]
     },
@@ -44,7 +44,7 @@
       "handler": "src/lambda/getUser/index.handler",
       "events": [
         {
-          "httpApi": "GET /getUser"
+          "httpApi": "GET /user"
         }
       ]
     },
@@ -52,7 +52,7 @@
       "handler": "src/lambda/postFundAccount/index.handler",
       "events": [
         {
-          "httpApi": "POST /postFundAccount"
+          "httpApi": "POST /fund"
         }
       ]
     },
@@ -60,7 +60,7 @@
       "handler": "src/lambda/postWithdrawAccount/index.handler",
       "events": [
         {
-          "httpApi": "POST /postWithdrawAccount"
+          "httpApi": "POST /withdraw"
         }
       ]
     },
@@ -68,7 +68,7 @@
       "handler": "src/lambda/getTransactionHistory/index.handler",
       "events": [
         {
-          "httpApi": "GET /getTransactionHistory"
+          "httpApi": "GET /transaction-history"
         }
       ]
     }
