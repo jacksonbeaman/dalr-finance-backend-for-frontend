@@ -1,20 +1,128 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 Description: AWS SAM template for dalr finance app
-LambdaProperties:
-  Handler: index.handler
-  Runtime: nodejs14.x
 Resources:
   ApiGatewayApi:
     Type: AWS::Serverless::Api
     Properties:
       StageName: Prod
-  LambdaFunction:
+  GetQuoteLambdaFunction:
     Type: AWS::Serverless::Function
     Properties:
-      Handler: index.handler
+      Handler: src/lambda/getQuote/index.handler
       Runtime: nodejs14.x
-      CodeUri: LambdaFunction
+      Events:
+        ProxyApiRoot:
+          Type: Api
+          Properties:
+            RestApiId:
+              Ref: ApiGatewayApi
+            Path: /quote
+            Method: GET
+      CodeUri: GetQuoteLambdaFunction
+    Metadata:
+      SamResourceId: GetQuoteLambdaFunction
+  GetTransactionHistoryLambdaFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: src/lambda/getTransactionHistory/index.handler
+      Runtime: nodejs14.x
+      Events:
+        ProxyApiRoot:
+          Type: Api
+          Properties:
+            RestApiId:
+              Ref: ApiGatewayApi
+            Path: /transaction-history
+            Method: GET
+      CodeUri: GetTransactionHistoryLambdaFunction
+    Metadata:
+      SamResourceId: GetTransactionHistoryLambdaFunction
+  GetUserLambdaFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: src/lambda/getUser/index.handler
+      Runtime: nodejs14.x
+      Events:
+        ProxyApiRoot:
+          Type: Api
+          Properties:
+            RestApiId:
+              Ref: ApiGatewayApi
+            Path: /user
+            Method: GET
+      CodeUri: GetUserLambdaFunction
+    Metadata:
+      SamResourceId: GetUserLambdaFunction
+  PostBuyStockLambdaFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: src/lambda/postBuyStock/index.handler
+      Runtime: nodejs14.x
+      Events:
+        ProxyApiRoot:
+          Type: Api
+          Properties:
+            RestApiId:
+              Ref: ApiGatewayApi
+            Path: /buy
+            Method: POST
+      CodeUri: PostBuyStockLambdaFunction
+    Metadata:
+      SamResourceId: PostBuyStockLambdaFunction
+  PostCreateUserLambdaFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: src/lambda/postCreateUser/index.handler
+      Runtime: nodejs14.x
+      Events:
+        ProxyApiRoot:
+          Type: Api
+          Properties:
+            RestApiId:
+              Ref: ApiGatewayApi
+            Path: /user
+            Method: POST
+      CodeUri: PostCreateUserLambdaFunction
+    Metadata:
+      SamResourceId: PostCreateUserLambdaFunction
+  PostFundAccountLambdaFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: src/lambda/postFundAccount/index.handler
+      Runtime: nodejs14.x
+      Events:
+        ProxyApiRoot:
+          Type: Api
+          Properties:
+            RestApiId:
+              Ref: ApiGatewayApi
+            Path: /fund
+            Method: POST
+      CodeUri: PostFundAccountLambdaFunction
+    Metadata:
+      SamResourceId: PostFundAccountLambdaFunction
+  PostSellAccountLambdaFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: src/lambda/postSellAccount/index.handler
+      Runtime: nodejs14.x
+      Events:
+        ProxyApiRoot:
+          Type: Api
+          Properties:
+            RestApiId:
+              Ref: ApiGatewayApi
+            Path: /sell
+            Method: POST
+      CodeUri: PostSellAccountLambdaFunction
+    Metadata:
+      SamResourceId: PostSellAccountLambdaFunction
+  PostWithdrawAccountLambdaFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: src/lambda/postWithdrawAccount/index.handler
+      Runtime: nodejs14.x
       Events:
         ProxyApiRoot:
           Type: Api
@@ -23,5 +131,6 @@ Resources:
               Ref: ApiGatewayApi
             Path: /withdraw
             Method: POST
+      CodeUri: PostWithdrawAccountLambdaFunction
     Metadata:
-      SamResourceId: LambdaFunction
+      SamResourceId: PostWithdrawAccountLambdaFunction

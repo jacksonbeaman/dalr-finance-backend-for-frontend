@@ -1,0 +1,76 @@
+{
+  "service": "dalr-finance-backend-for-frontend",
+  "plugins": ["serverless-offline"],
+  "provider": {
+    "name": "aws",
+    "runtime": "nodejs14.x",
+    "stage": "dev",
+    "region": "us-west-2"
+  },
+  "functions": {
+    "getQuote": {
+      "handler": "src/lambda/getQuote/index.handler",
+      "events": [
+        {
+          "httpApi": "GET /quote"
+        }
+      ]
+    },
+    "postBuyStock": {
+      "handler": "src/lambda/postBuyStock/index.handler",
+      "events": [
+        {
+          "httpApi": "POST /buy"
+        }
+      ]
+    },
+    "postSellStock": {
+      "handler": "src/lambda/postSellStock/index.handler",
+      "events": [
+        {
+          "httpApi": "POST /sell"
+        }
+      ]
+    },
+    "postCreateUser": {
+      "handler": "src/lambda/postCreateUser/index.handler",
+      "events": [
+        {
+          "httpApi": "POST /user"
+        }
+      ]
+    },
+    "getUser": {
+      "handler": "src/lambda/getUser/index.handler",
+      "events": [
+        {
+          "httpApi": "GET /user"
+        }
+      ]
+    },
+    "postFundAccount": {
+      "handler": "src/lambda/postFundAccount/index.handler",
+      "events": [
+        {
+          "httpApi": "POST /fund"
+        }
+      ]
+    },
+    "postWithdrawAccount": {
+      "handler": "src/lambda/postWithdrawAccount/index.handler",
+      "events": [
+        {
+          "httpApi": "POST /withdraw"
+        }
+      ]
+    },
+    "getTransactionHistory": {
+      "handler": "src/lambda/getTransactionHistory/index.handler",
+      "events": [
+        {
+          "httpApi": "GET /transaction-history"
+        }
+      ]
+    }
+  }
+}

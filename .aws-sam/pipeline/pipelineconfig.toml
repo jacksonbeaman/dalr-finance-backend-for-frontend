@@ -2,22 +2,22 @@ version = 0.1
 [default]
 [default.pipeline_bootstrap]
 [default.pipeline_bootstrap.parameters]
-pipeline_user = "arn:aws:iam::636793644820:user/aws-sam-cli-managed-build-dalr-fund-a-PipelineUser-83X1A6IH00P8"
+pipeline_user = "arn:aws:iam::636793644820:user/aws-sam-cli-managed-build-dalr-api-pi-PipelineUser-924OOZ2PNUUA"
 
-[build-dalr-fund-account]
-[build-dalr-fund-account.pipeline_bootstrap]
-[build-dalr-fund-account.pipeline_bootstrap.parameters]
-pipeline_execution_role = "arn:aws:iam::636793644820:role/aws-sam-cli-managed-build-da-PipelineExecutionRole-1XGY5D4EX2VLM"
-cloudformation_execution_role = "arn:aws:iam::636793644820:role/aws-sam-cli-managed-build-CloudFormationExecutionR-1GF7YVAISYJAZ"
-artifacts_bucket = "aws-sam-cli-managed-build-dalr-fu-artifactsbucket-amut84zwko89"
+[build-dalr-api]
+[build-dalr-api.pipeline_bootstrap]
+[build-dalr-api.pipeline_bootstrap.parameters]
+pipeline_execution_role = "arn:aws:iam::636793644820:role/aws-sam-cli-managed-build-da-PipelineExecutionRole-CVY34OVK3K2E"
+cloudformation_execution_role = "arn:aws:iam::636793644820:role/aws-sam-cli-managed-build-CloudFormationExecutionR-1R0K6SUQ51BIK"
+artifacts_bucket = "aws-sam-cli-managed-build-dalr-ap-artifactsbucket-9p2aog3ew4sn"
 image_repository = ""
 region = "us-west-2"
 
-[deploy-dalr-fund-account]
-[deploy-dalr-fund-account.pipeline_bootstrap]
-[deploy-dalr-fund-account.pipeline_bootstrap.parameters]
-pipeline_execution_role = "arn:aws:iam::636793644820:role/aws-sam-cli-managed-deploy-d-PipelineExecutionRole-13HGV1S2043HM"
-cloudformation_execution_role = "arn:aws:iam::636793644820:role/aws-sam-cli-managed-deplo-CloudFormationExecutionR-65JMI9H0JAP4"
-artifacts_bucket = "aws-sam-cli-managed-deploy-dalr-f-artifactsbucket-600sfrypn42l"
+[deploy-dalr-api]
+[deploy-dalr-api.pipeline_bootstrap]
+[deploy-dalr-api.pipeline_bootstrap.parameters]
+pipeline_execution_role = "arn:aws:iam::636793644820:role/aws-sam-cli-managed-deploy-d-PipelineExecutionRole-1UJCFBX5JUCKE"
+cloudformation_execution_role = "arn:aws:iam::636793644820:role/aws-sam-cli-managed-deplo-CloudFormationExecutionR-CADOTUNL9RIB"
+artifacts_bucket = "aws-sam-cli-managed-deploy-dalr-a-artifactsbucket-zrlwjd4si8yh"
 image_repository = ""
 region = "us-west-2"

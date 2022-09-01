@@ -1,0 +1,38 @@
+{
+  "name": "dalr-finance-backend-for-frontend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --exit -r @babel/register 'test/unit/**/*.js' -r dotenv/config",
+    "test:coverage": "nyc npm run test",
+    "dev": "sls offline --httpPort 8080 --noPrependStageInUrl"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jacksonbeaman/dalr-finance-backend-for-frontend.git"
+  },
+  "author": "jacksonbeaman@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jacksonbeaman/dalr-finance-backend-for-frontend/issues"
+  },
+  "homepage": "https://github.com/jacksonbeaman/dalr-finance-backend-for-frontend#readme",
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.87.0",
+    "@aws-sdk/lib-dynamodb": "^3.87.0",
+    "@aws-sdk/util-dynamodb": "^3.100.0",
+    "@babel/cli": "^7.17.10",
+    "@babel/core": "^7.18.5",
+    "@babel/preset-env": "^7.18.2",
+    "@babel/register": "^7.17.7",
+    "axios": "^0.26.0",
+    "chai": "^4.3.6",
+    "mocha": "^10.0.0",
+    "mocha-junit-reporter": "^2.0.2",
+    "nyc": "^15.1.0",
+    "serverless": "^3.3.0",
+    "serverless-offline": "^8.5.0",
+    "sinon": "^14.0.0"
+  }
+}

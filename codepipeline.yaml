@@ -44,16 +44,16 @@ Parameters:
     Default: "us-west-2"
   TestingStackName:
     Type: String
-    Default: "staging-dalr-fund-account"
+    Default: "staging-dalr-api"
   TestingPipelineExecutionRole:
     Type: String
-    Default: "arn:aws:iam::636793644820:role/aws-sam-cli-managed-build-da-PipelineExecutionRole-1XGY5D4EX2VLM"
+    Default: "arn:aws:iam::636793644820:role/aws-sam-cli-managed-build-da-PipelineExecutionRole-CVY34OVK3K2E"
   TestingCloudFormationExecutionRole:
     Type: String
-    Default: "arn:aws:iam::636793644820:role/aws-sam-cli-managed-build-CloudFormationExecutionR-1GF7YVAISYJAZ"
+    Default: "arn:aws:iam::636793644820:role/aws-sam-cli-managed-build-CloudFormationExecutionR-1R0K6SUQ51BIK"
   TestingArtifactBucket:
     Type: String
-    Default: "aws-sam-cli-managed-build-dalr-fu-artifactsbucket-amut84zwko89"
+    Default: "aws-sam-cli-managed-build-dalr-ap-artifactsbucket-9p2aog3ew4sn"
   TestingImageRepository:
     Type: String
     # If there are functions with "Image" PackageType in your template,
@@ -65,16 +65,16 @@ Parameters:
     Default: "us-west-2"
   ProdStackName:
     Type: String
-    Default: "prod-dalr-fund-account"
+    Default: "prod-dalr-api"
   ProdPipelineExecutionRole:
     Type: String
-    Default: "arn:aws:iam::636793644820:role/aws-sam-cli-managed-deploy-d-PipelineExecutionRole-13HGV1S2043HM"
+    Default: "arn:aws:iam::636793644820:role/aws-sam-cli-managed-deploy-d-PipelineExecutionRole-1UJCFBX5JUCKE"
   ProdCloudFormationExecutionExeRole:
     Type: String
-    Default: "arn:aws:iam::636793644820:role/aws-sam-cli-managed-deplo-CloudFormationExecutionR-65JMI9H0JAP4"
+    Default: "arn:aws:iam::636793644820:role/aws-sam-cli-managed-deplo-CloudFormationExecutionR-CADOTUNL9RIB"
   ProdArtifactBucket:
     Type: String
-    Default: "aws-sam-cli-managed-deploy-dalr-f-artifactsbucket-600sfrypn42l"
+    Default: "aws-sam-cli-managed-deploy-dalr-a-artifactsbucket-zrlwjd4si8yh"
   ProdImageRepository:
     Type: String
     # If there are functions with "Image" PackageType in your template,
