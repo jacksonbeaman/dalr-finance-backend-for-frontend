@@ -1,9 +1,6 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 Description: AWS SAM template for dalr finance app
-LambdaProperties: &LambdaProperties
-  Handler: index.handler
-  Runtime: nodejs14.x
 Resources:
   ApiGatewayApi:
     Type: AWS::Serverless::Api
@@ -11,8 +8,9 @@ Resources:
       StageName: Prod
   LambdaFunction:
     Type: AWS::Serverless::Function
-    Properties:
-      <<: *LambdaProperties
+    Properties: &LambdaProperties
+      Handler: index.handler
+      Runtime: nodejs14.x
       CodeUri: /src/lambda/getQuote
       Events:
         ProxyApiRoot:
