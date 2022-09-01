@@ -9,6 +9,11 @@ Resources:
   GetQuoteLambdaFunction:
     Type: AWS::Serverless::Function
     Properties: &LambdaProperties
+      Environment:
+        Variables:
+          NODE_ENV: development
+          IEX_TOKEN: '{{resolve:secretsmanager:IEX/tokens:SecretString:IEX_TOKEN}}'
+          IEX_TOKEN_PROD: '{{resolve:secretsmanager:IEX/tokens:SecretString:IEX_TOKEN_PROD}}'
       Handler: src/lambda/getQuote/index.handler
       Runtime: nodejs14.x
       Events:
