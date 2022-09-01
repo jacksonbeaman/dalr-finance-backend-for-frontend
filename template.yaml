@@ -9,9 +9,8 @@ Resources:
   LambdaFunction:
     Type: AWS::Serverless::Function
     Properties: &LambdaProperties
-      Handler: index.handler
+      Handler: src/lambda/getQuote/index.handler
       Runtime: nodejs14.x
-      CodeUri: /src/lambda/getQuote
       Events:
         ProxyApiRoot:
           Type: Api
@@ -23,7 +22,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       <<: *LambdaProperties
-      CodeUri: /src/lambda/getTransactionHistory
+      Handler: src/lambda/getTransactionHistory/index.handler
       Events:
         ProxyApiRoot:
           Type: Api
@@ -35,7 +34,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       <<: *LambdaProperties
-      CodeUri: /src/lambda/getUser
+      Handler: src/lambda/getUser/index.handler
       Events:
         ProxyApiRoot:
           Type: Api
@@ -47,7 +46,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       <<: *LambdaProperties
-      CodeUri: /src/lambda/postBuyStock
+      Handler: src/lambda/postBuyStock/index.handler
       Events:
         ProxyApiRoot:
           Type: Api
@@ -59,7 +58,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       <<: *LambdaProperties
-      CodeUri: /src/lambda/postCreateUser
+      Handler: src/lambda/postCreateUser/index.handler
       Events:
         ProxyApiRoot:
           Type: Api
@@ -71,7 +70,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       <<: *LambdaProperties
-      CodeUri: /src/lambda/postFundAccount
+      Handler: src/lambda/postFundAccount/index.handler
       Events:
         ProxyApiRoot:
           Type: Api
@@ -83,7 +82,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       <<: *LambdaProperties
-      CodeUri: /src/lambda/postSellAccount
+      Handler: src/lambda/postSellAccount/index.handler
       Events:
         ProxyApiRoot:
           Type: Api
@@ -95,7 +94,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       <<: *LambdaProperties
-      CodeUri: /src/lambda/postWithdrawAccount
+      Handler: src/lambda/postWithdrawAccount/index.handler
       Events:
         ProxyApiRoot:
           Type: Api
