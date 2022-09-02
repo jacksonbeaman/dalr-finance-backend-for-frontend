@@ -88,7 +88,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       <<: *LambdaProperties
-      Handler: src/lambda/postSellAccount/index.handler
+      Handler: src/lambda/postSellStock/index.handler
       Events:
         ProxyApiRoot:
           Type: Api
