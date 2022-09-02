@@ -9,6 +9,7 @@ Resources:
   GetQuoteLambdaFunction:
     Type: AWS::Serverless::Function
     Properties: &LambdaProperties
+      Role: arn:aws:iam::636793644820:role/dalr-api-lambda-role
       Environment:
         Variables:
           NODE_ENV: development
