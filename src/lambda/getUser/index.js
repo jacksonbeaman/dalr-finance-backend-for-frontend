@@ -1,4 +1,5 @@
 const getUser = require('../../dynamodb/getUser');
+const response = require('../utils/response');
 
 exports.handler = async (event, context) => {
   try {
@@ -6,7 +7,7 @@ exports.handler = async (event, context) => {
 
     const userData = await getUser(user);
 
-    return { statusCode: 200, body: JSON.stringify(userData) };
+    return response.generate(200, JSON.stringify(userData));
   } catch (error) {
     console.error(error);
     return {
