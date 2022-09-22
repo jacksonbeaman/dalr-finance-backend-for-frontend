@@ -1,6 +1,7 @@
 const getUser = require('../../dynamodb/getUser');
 const recordTransaction = require('../../dynamodb/recordTransaction');
 const getQuote = require('../utils/getQuote');
+const response = require('../utils/response');
 
 exports.handler = async (event, context) => {
   try {
@@ -63,28 +64,25 @@ exports.handler = async (event, context) => {
 
     const updatedUserData = await getUser(user);
 
-    return {
-      statusCode: 200,
-      body: JSON.stringify({
+    return response.generate(
+      200,
+      JSON.stringify({
         ...stockTransactionData,
         amount,
         updatedUserData,
-      }),
-    };
+      })
+    );
   } catch (error) {
-    return {
-      statusCode: error.response?.status
-        ? error.response?.status
-        : error.statusCode
-        ? error.statusCode
-        : 500,
-      body: JSON.stringify(
-        error.response?.data
-          ? error.response?.data
-          : error.message
-          ? error.message
-          : error
-      ),
-    };
+    const errorCode = error.response?.status
+      ? error.response?.status
+      : error.statusCode
+      ? error.statusCode
+      : 500;
+    const errorBody = error.response?.data
+      ? error.response?.data
+      : error.message
+      ? error.message
+      : error;
+    return response.generate(errorCode, errorBody);
   }
 };
