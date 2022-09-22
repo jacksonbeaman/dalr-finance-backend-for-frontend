@@ -10,9 +10,9 @@ exports.handler = async (event, context) => {
     return response.generate(200, JSON.stringify(userData));
   } catch (error) {
     console.error(error);
-    return {
-      statusCode: error.statusCode ? error.statusCode : 400,
-      body: JSON.stringify(error.message ? error.message : error),
-    };
+
+    const errorCode = error.statusCode ? error.statusCode : 400;
+    const errorBody = JSON.stringify(error.message ? error.message : error);
+    return response.generate(errorCode, errorBody);
   }
 };
