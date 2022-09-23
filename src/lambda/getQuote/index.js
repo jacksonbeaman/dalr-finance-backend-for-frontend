@@ -17,10 +17,6 @@ exports.handler = async (event, context) => {
 
     const data = await getQuote.getQuote(symbol, iexToken);
 
-    const headers = {
-      contentType: 'application/json',
-      'Access-Control-Allow-Origin': '*',
-    };
     const body = JSON.stringify(data);
 
     return { statusCode: 200, headers, body };
