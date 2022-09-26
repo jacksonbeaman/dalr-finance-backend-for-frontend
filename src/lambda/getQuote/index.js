@@ -1,4 +1,5 @@
 const getQuote = require('../utils/getQuote');
+const response = require('../utils/response');
 
 exports.handler = async (event, context) => {
   try {
@@ -19,21 +20,18 @@ exports.handler = async (event, context) => {
 
     const body = JSON.stringify(data);
 
-    return { statusCode: 200, headers, body };
+    return response.generate(200, body);
   } catch (error) {
-    return {
-      statusCode: error.response?.status
-        ? error.response?.status
-        : error.statusCode
-        ? error.statusCode
-        : 400,
-      body: JSON.stringify(
-        error.response?.data
-          ? error.response?.data
-          : error.message
-          ? error.message
-          : error
-      ),
-    };
+    const errorCode = error.response?.status
+      ? error.response?.status
+      : error.statusCode
+      ? error.statusCode
+      : 400;
+    const errorBody = error.response?.data
+      ? error.response?.data
+      : error.message
+      ? error.message
+      : error;
+    return response.generate(errorCode, errorBody);
   }
 };
