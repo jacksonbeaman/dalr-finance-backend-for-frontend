@@ -1,5 +1,6 @@
 const { PutItemCommand } = require('@aws-sdk/client-dynamodb');
 const ddb = require('../../dynamodb');
+const response = require('../utils/response');
 
 exports.handler = async (event, context) => {
   try {
@@ -18,9 +19,10 @@ exports.handler = async (event, context) => {
 
     const res = await ddb.send(command);
 
-    return { statusCode: 200, body: JSON.stringify(res) };
+    return response.generate(200, JSON.stringify(res));
   } catch (error) {
-    console.error(error);
-    return { statusCode: 400, body: JSON.stringify(error) };
+    const errorCode = 400;
+    const errorBody = error;
+    return response.generate(errorCode, JSON.stringify(errorBody));
   }
 };
