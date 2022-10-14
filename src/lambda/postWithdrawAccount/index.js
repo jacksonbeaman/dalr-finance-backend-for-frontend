@@ -9,11 +9,17 @@ exports.handler = async (event, context) => {
     const { user, cashToWithdraw } =
       typeof data === 'string' ? JSON.parse(data) : data;
 
+    if (cashToWithdraw >= 0) {
+      const error = new Error('Improperly formatted cash value');
+      error.statusCode = 420;
+      throw error;
+    }
+
     const { username, cash: currentUserCash } = await getUser(user);
 
     if (currentUserCash < -cashToWithdraw) {
       const error = new Error('Insufficient funds to complete withdrawal');
-      error.statusCode = 420;
+      error.statusCode = 421;
       throw error;
     }
 
