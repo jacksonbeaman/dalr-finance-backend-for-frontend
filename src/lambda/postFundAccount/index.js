@@ -19,7 +19,9 @@ exports.handler = async (event, context) => {
 
     const res = await recordTransaction(username, cashToDeposit, 'deposit');
 
-    return response.generate(200, JSON.stringify(res));
+    const updatedUserData = await getUser(user);
+
+    return response.generate(200, JSON.stringify({ ...res, updatedUserData }));
   } catch (error) {
     const errorCode = error.statusCode ? error.statusCode : 400;
     const errorBody = error.message ? error.message : error;
