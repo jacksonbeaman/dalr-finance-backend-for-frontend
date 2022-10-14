@@ -9,6 +9,12 @@ exports.handler = async (event, context) => {
     const { user, cashToDeposit } =
       typeof data === 'string' ? JSON.parse(data) : data;
 
+    if (cashToDeposit <= 0) {
+      const error = new Error('Improperly formatted cash value');
+      error.statusCode = 420;
+      throw error;
+    }
+
     const { username } = await getUser(user);
 
     const res = await recordTransaction(username, cashToDeposit, 'deposit');
