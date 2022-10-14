@@ -13,15 +13,19 @@ exports.handler = async (event, context) => {
       throw error;
     }
 
-    const { user, symbol, shares } =
-      typeof data === 'string' ? JSON.parse(data) : data;
+    const { user, shares } = typeof data === 'string' ? JSON.parse(data) : data;
+
+    let { symbol } = typeof data === 'string' ? JSON.parse(data) : data;
 
     const iexToken = process.env.IEX_TOKEN;
 
-    const { latestPrice: sharePrice, companyName } = await getQuote.getQuote(
-      symbol,
-      iexToken
-    );
+    const {
+      latestPrice: sharePrice,
+      companyName,
+      symbol: iexFormattedSymbol,
+    } = await getQuote.getQuote(symbol, iexToken);
+
+    symbol = iexFormattedSymbol.trim().toUpperCase();
 
     const amount = -(
       Math.floor(100 * parseInt(shares) * parseFloat(sharePrice)) / 100
